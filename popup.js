@@ -8,6 +8,23 @@ document.addEventListener("DOMContentLoaded", function () {
   function init() {
     loadStoredStrings();
     addEventListeners();
+
+    checkAndToggleCopyAllButton();
+    chrome.storage.onChanged.addListener(function (changes, namespace) {
+      checkAndToggleCopyAllButton();
+    });
+  }
+
+  function checkAndToggleCopyAllButton() {
+    chrome.storage.sync.get({ strings: [] }, function (result) {
+      if (result.strings.length >= 2) {
+        copyAllButton.style.display = "inline-block";
+        copyAllButton.addEventListener("click", copyAllData);
+      } else {
+        copyAllButton.style.display = "none";
+        copyAllButton.removeEventListener("click", copyAllData);
+      }
+    });
   }
 
   function loadStoredStrings() {
@@ -30,6 +47,16 @@ document.addEventListener("DOMContentLoaded", function () {
     titleField.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         saveData();
+      }
+    });
+
+    chrome.storage.sync.get({ strings: [] }, function (result) {
+      if (result.strings.length >= 2) {
+        // Display the "Copy All" button only if at least two entries exist
+        copyAllButton.style.display = "inline-block";
+        copyAllButton.addEventListener("click", copyAllData);
+      } else {
+        copyAllButton.style.display = "none";
       }
     });
   }
