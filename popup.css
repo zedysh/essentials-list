@@ -103,23 +103,13 @@ body {
 
 .copyButton,
 .removeButton {
-  --button-margin-left: 10px;
-  --button-padding: 8px;
+  --button-padding: 4px;
 
-  margin-left: var(--button-margin-left);
   padding: var(--button-padding);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
-
-.copyButton:hover {
-  background-color: var(--copy-button-bg);
-}
-
-.removeButton:hover {
-  background-color: var(--remove-button-bg);
 }
 
 .titleContainer {

@@ -121,13 +121,17 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonsContainer.style.display = "flex";
     buttonsContainer.style.gap = "4px";
 
-    const copyButton = createButton("copyButton", "Copy", function () {
+    const copyButton = createButton("copyButton", "./copy.svg", function () {
       copyToClipboard(value);
     });
 
-    const removeButton = createButton("removeButton", "Remove", function () {
-      removeStringFromList(listItem);
-    });
+    const removeButton = createButton(
+      "removeButton",
+      "./remove.svg",
+      function () {
+        removeStringFromList(listItem);
+      }
+    );
 
     buttonsContainer.appendChild(copyButton);
     buttonsContainer.appendChild(removeButton);
@@ -194,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = e.dataTransfer.getData("text/plain");
     const sourceItem = document.querySelector(".dragging");
     const targetItem = e.target.closest(".stringItem");
-
     if (sourceItem && targetItem) {
       const sourceIndex = Array.from(sourceItem.parentNode.children).indexOf(
         sourceItem
@@ -232,11 +235,37 @@ document.addEventListener("DOMContentLoaded", function () {
     return span;
   }
 
-  function createButton(className, textContent, clickHandler) {
+  function createButton(className, imagePath, clickHandler) {
     const button = document.createElement("button");
     button.className = className;
-    button.textContent = textContent;
+
+    // Create an image element
+    const image = document.createElement("img");
+    image.src = imagePath; // Set the image source
+    image.alt = ""; // Add an empty alt attribute for accessibility
+
+    // Set styles for the image
+    image.style.width = "24px";
+    image.style.height = "24px";
+
+    // Append the image to the button
+    button.appendChild(image);
+
+    // Add click event listener
     button.addEventListener("click", clickHandler);
+
+    // Add a transparent background to the button
+    button.style.background = "transparent";
+
+    button.addEventListener("mouseover", function () {
+      button.style.opacity = 0.75;
+      button.style.color = "blue";
+    });
+
+    button.addEventListener("mouseout", function () {
+      button.style.opacity = 1;
+    });
+
     return button;
   }
 
