@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "String Storage Extension",
+  "version": "1.0",
+  "description": "A simple Chrome extension to store and remove strings.",
+  "permissions": ["storage"],
+  "browser_action": {
+    "default_icon": "./logo.png",
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,131 @@
+:root {
+  --background-color: #333;
+  --text-color: #ededed;
+  --border-color: #555;
+  --button-bg: #4caf50;
+  --button-hover: #45a049;
+  --list-item-hover-shadow: rgba(255, 255, 255, 0.2);
+  --copy-button-bg: #007bff;
+  --remove-button-bg: #dc3545;
+  --border: var(--border-color) 1px solid;
+
+  --space: 8px;
+  --half-space: 4px;
+  --double-space: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  --body-width: 400px;
+  --body-padding: 20px;
+  --body-font: "Roboto", sans-serif;
+
+  width: var(--body-width);
+  padding: var(--body-padding);
+  font-family: var(--body-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: var(--border);
+}
+
+#titleField,
+#inputField {
+  --input-margin-bottom: 15px;
+  --input-padding: 10px;
+
+  width: 100%;
+  margin-bottom: var(--input-margin-bottom);
+  padding: var(--input-padding);
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  background-color: #444;
+  color: var(--text-color);
+}
+
+#titleField {
+  width: 40%;
+}
+
+.inputs {
+  display: flex;
+  gap: var(--double-space);
+}
+
+#titleField:focus,
+#inputField:focus {
+  border-color: var(--button-bg);
+}
+
+#saveButton,
+#copyAllButton {
+  --button-padding: 10px;
+
+  width: 100%;
+  padding: var(--button-padding);
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#copyAllButton {
+  width: fit-content;
+}
+
+#saveButton:hover {
+  background-color: var(--button-hover);
+}
+
+#stringList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.stringItem {
+  --string-item-margin-top-and-bottom: 15px;
+
+  margin: var(--string-item-margin-top-and-bottom) 0;
+  padding: var(--string-item-padding);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyButton,
+.removeButton {
+  --button-margin-left: 10px;
+  --button-padding: 8px;
+
+  margin-left: var(--button-margin-left);
+  padding: var(--button-padding);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.copyButton:hover {
+  background-color: var(--copy-button-bg);
+}
+
+.removeButton:hover {
+  background-color: var(--remove-button-bg);
+}
+
+.titleContainer {
+  opacity: 0.5;
+}
+
+.valueContainer {
+  word-break: break-all;
+}
